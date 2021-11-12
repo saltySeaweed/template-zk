@@ -1,0 +1,71 @@
+/*
+    author: VanNT
+*/
+.scroll-widget{
+    overflow-y: auto!important;
+    min-height:30px;
+    max-height: calc(100vh - 270px)!important;
+}
+.widget-simg{
+    position: absolute;
+    margin-top: 15px;
+}
+.table-padding{
+    padding: 2px!important;
+}
+.them1 .page-size-combobox .z-combobox-input{
+    height: 27px!important;
+}
+
+.theme1 .page-size .z-combobox-input{
+    height: 27px;
+}
+
+.paging-height{
+    height: 27px;
+}
+.theme1 .page-input .z-paging-input{
+    height: 27px!important;
+}
+
+
+/*
+    vinhcv - edit widget
+*/
+.theme1 .setting-input-number {
+    /*max-width: 80px;*/
+}
+
+.theme1 .threshold-percentile {
+    height: 24px !important;
+}
+
+.threshold-percentile > input {
+    height: 24px !important;
+}
+.threshold-percentile > a {
+    height: 20px!important;
+    padding: 0!important;
+}
+
+.threshold-percentile-button {
+    height: 23px;
+    width: 25px;
+    padding: 0!important;
+    color: white!important;
+    /*background-color: #ed9939!important;*/
+}
+.threshold-percentile-button-del {
+    background-color: red!important;
+}
+.threshold-percentile-button-add {
+    background-color: #0093F9!important;
+}
+.threshold-percentile-checkbox > input {
+    display: flex !important;
+    justify-content: center !important;
+    padding-top: 5px !important;
+    width: 23px !important;
+    height: 23px !important;
+    /*background-color: #0093F9 !important;*/
+}

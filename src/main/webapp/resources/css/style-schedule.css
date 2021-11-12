@@ -1,0 +1,25 @@
+#bld{
+    overflow: auto;
+}
+#div1{
+    text-align:center;
+    margin-bottom:2px;
+}
+#listhead1{
+    text-align: center;
+}
+#lastgrid{
+    display: flex;
+    text-align: center;
+}
+.theme1 .z-grid-body{
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    overflow: hidden;
+    zoom: 1;
+    display: flex!important;
+    text-align: center!important;
+}
+#labelKPI{
+    font-size:initial;font-weight:bold;
+}

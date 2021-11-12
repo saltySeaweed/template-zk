@@ -1,0 +1,94 @@
+/* sidebar */
+
+@media(min-width:958px) {
+    .theme2 .sidebar {
+        line-height: normal;
+        min-width: 190px;
+        background-color:red;
+    }
+}
+
+@media(max-width:957px) {
+    .theme2 .sidebar {
+        min-width: 55px;
+    }
+    /* make navbar border fill the complete width */
+    .z-navbar-vertical{
+        max-width: 100%;
+    }
+}
+
+.theme2 .user-logo {
+    padding: 20px 0;
+    height: 130px;
+}
+
+.theme2 .username{
+	color:white;
+	font-size:18px;
+	display:block;
+	margin-top:10px
+}
+
+/** make font consistent with ZK
+*/
+.theme2 .highcharts-legend-item >text{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.theme2 .container-fluid{
+    background-color: #fff;
+}
+
+.theme2 .z-comboitem-image img{
+	min-width: 40px;
+    margin: 5px auto;
+    display: block;
+}
+.theme2 .z-tabpanel{
+	height:100% !important
+}
+.theme2 .footer-copyright{
+	    height: 100px;
+    padding: 42px !important;
+    background-color: #003b49;
+    border-radius: 10px 10px 0px 0px;
+    margin-top: 15px;
+}
+
+.theme2 .footer-copyright .z-label,
+.theme2 .footer-copyright a{
+	font-size: 16px;
+	color:white
+}
+.theme2 .z-tabpanel{
+    height:100% !important
+}
+.theme2 .ems-title{
+	background: #fff;
+    padding: 21px !important;
+    width: 100%;
+    color: #000;
+    margin: 0px !important;
+}
+/*
+* Language
+*/
+.theme2 .language-container {
+    margin: 0 6px;
+    width: 130px;
+}
+
+.theme2 .icon-notification {
+    width: 28px;
+    height: 28px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+.theme2 .avatar-container {
+    margin-top: -11px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}

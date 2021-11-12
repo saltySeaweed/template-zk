@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<config-name>zkspringboot-demo</config-name>
+
+	<!--enable websocket support in ZK 8.5.1 (ZK-3799)  -->
+	<listener>
+		<listener-class>org.zkoss.zkmax.au.websocket.WebSocketWebAppInit</listener-class>
+	</listener>
+
+</zk>

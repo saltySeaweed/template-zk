@@ -1,0 +1,64 @@
+/* sidebar */
+
+@media(min-width:958px) {
+    .sidebar {
+        line-height: normal;
+        min-width: 190px;
+    }
+}
+
+@media(max-width:957px) {
+    .sidebar {
+        min-width: 55px;
+    }
+    /* make navbar border fill the complete width */
+    .z-navbar-vertical{
+        max-width: 100%;
+    }
+}
+/*
+* Language
+*/
+.language-container {
+    margin: 0 6px;
+    width: 130px;
+}
+
+.icon-notification {
+    width: 28px;
+    height: 28px;
+    margin-top: 3px;
+    cursor: pointer;
+}
+.avatar-container {
+    margin-top: -11px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.user-logo {
+    padding: 20px 0;
+}
+
+/** make font consistent with ZK
+*/
+.highcharts-legend-item >text{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.container-fluid{
+    background-color: #f9fcff;
+}
+
+.z-comboitem-image img{
+	min-width: 40px;
+    margin: 5px auto;
+    display: block;
+}
+
+
+[class*="z-"]:not([class*="z-icon-"]) {
+    font-family: Roboto;
+}
