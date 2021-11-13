@@ -3,9 +3,6 @@
 <?link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"?>
 <?link rel="stylesheet" href="/resources/css/zk-bootstrap.css" ?>
 
-<?link rel="stylesheet" href="/resources/css/themes/theme1/zk-admin-bootstrap-custom-theme.css"?>
-<?link rel="stylesheet" href="/resources/css/themes/theme1/custom-theme.css" ?>
-<?link rel="stylesheet" href="/resources/css/themes/theme1/layout.css" ?>
 
 <!--
 <?link rel="stylesheet" href="/resources/css/themes/theme2/zk-admin-bootstrap-custom-theme.css"?>
@@ -16,27 +13,60 @@
 <?link rel="stylesheet" type="text/css" href="/resources/css/font-icons.css"?>
 <?link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet" ?>
 <zk xmlns:n="native" xmlns:w="client">
-    <!--	<div class="theme1 wrap d-flex">-->
-    <!--		<div class="db-sidebar">-->
-    <!--			Side bar-->
-    <!--		</div>-->
-    <!--		<div class="db-body">-->
-    <!--			<apply templateURI="/menu.zul" />-->
-    <!--			<div class="db-ct">-->
-    <!--				Content Right-->
-    <!--			</div>-->
-    <!--		</div>-->
-    <!--	</div>-->
-
-
-    <hlayout id="mainlayout"
-             viewModel="@id('vm')@init('com.example.zktraining.controller.HomeController')"
+    <hlayout viewModel="@id('vm') @init('com.example.zktraining.controller.HomeController')"
              width="100%">
-        <div class="wrap d-flex" style="width: 100%;">
+        <!--        <div sclass="container mt-5 ml-5">-->
+        <!--            <label value="@load(vm.title)"/>-->
+        <!--        </div>-->
+        <div class="alert alert-secondary mt-5">
             <label value="@load(vm.title)"/>
         </div>
+        <textbox value="@bind(vm.title)"></textbox>
+        <button onClick="@command('changeTitle')" label="change title"/>
 
 
+        <div sclass="container mt-5">
+<!--            <grid >-->
+<!--                <auxhead>-->
+<!--                    <auxheader colspan="4" label="Danh Sach Học Sinh dùng foreach"/>-->
+<!--                </auxhead>-->
+<!--                <columns>-->
+<!--                    <column hflex="5">Họ Tên</column>-->
+<!--                    <column hflex="6">Nơi Ở</column>-->
+<!--                </columns>-->
+<!--                <rows sclass="narrow">-->
+<!--                    <forEach items="@load(vm.studentList)" var="item">-->
+<!--                        <row>-->
+<!--                            <label value="@load(item.name)"/>-->
+<!--                            <label value="${item.address}"/>-->
+<!--                        </row>-->
+<!--                    </forEach>-->
+<!--                </rows>-->
+<!--            </grid>-->
+            <grid model="@load(vm.studentList)" mold="paging" pageSize="100">
+                <columns>
+                    <column hflex="5">Họ Tên</column>
+                    <column hflex="6">Nơi Ở</column>
+                    <column ></column>
+                </columns>
+                <template name="model" var="item">
+                    <row onClick="@command('editStudent', item = item)">
+                        <label value="@load(item.name)"/>
+                        <label value="${item.address}"/>
+                        <label value="xóa" onClick="@command('confirmDelete', item = item)"/>
+                    </row>
+                </template>
+            </grid>
+            <label value="name"/>
+            <textbox value="@bind(vm.student.name)"></textbox>
+            <label value="address"/>
+            <textbox value="@bind(vm.student.address)"></textbox>
+            <button onClick="@command('saveStudent')" label="save"/>
+            <button onClick="@command('changeName')" label="Test change name"/>
+            <button onClick="@command('changeName')" label="Test change name"/>
+            <button onClick="@command('openFormAddNew')" label="open form inserts"/>
+
+        </div>
     </hlayout>
 </zk>
         <?script src="/resources/js/jquery-ui.min.js"?>

@@ -1,0 +1,14 @@
+<zk>
+    <window viewModel="@id('vm') @init('com.example.zktraining.controller.FormController')" closable="true">
+
+
+        <label value="@load(vm.mode)"/>
+            <label value="name"/>
+            <textbox value="@bind(vm.student.name)"></textbox>
+            <label value="address"/>
+            <textbox value="@bind(vm.student.address)"></textbox>
+            <button onClick="@command('saveStudent')" label="save"/>
+            <button onClick="@command('cancelForm')" label="cancel"/>
+
+    </window>
+</zk>
