@@ -41,10 +41,6 @@ public class HomeController {
     }
     private void initObject(){
         studentList = new ArrayList<>();
-        studentList.add(new Student(1, "Phúc", "HN"));
-        studentList.add(new Student( 2,"Dưỡng", "DCM"));
-        studentList.add(new Student(3, "Long", "HF"));
-        studentList.add(new Student(4, "Hùng", "FFF"));
         student = new Student();
     }
 
