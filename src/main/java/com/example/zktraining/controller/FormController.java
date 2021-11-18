@@ -1,7 +1,5 @@
 package com.example.zktraining.controller;
 
-import com.example.zktraining.dto.Student;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.zkoss.bind.BindUtils;

@@ -1,18 +1,14 @@
 package com.example.zktraining.controller;
 
-import com.example.zktraining.dto.Student;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang.StringUtils;
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.*;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
-import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zkmax.ui.util.Toast;
 import org.zkoss.zkplus.spring.DelegatingVariableResolver;
-import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Window;
 
@@ -41,10 +37,6 @@ public class HomeController {
     }
     private void initObject(){
         studentList = new ArrayList<>();
-        studentList.add(new Student(1, "Phúc", "HN"));
-        studentList.add(new Student( 2,"Dưỡng", "DCM"));
-        studentList.add(new Student(3, "Long", "HF"));
-        studentList.add(new Student(4, "Hùng", "FFF"));
         student = new Student();
     }
 
