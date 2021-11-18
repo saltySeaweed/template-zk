@@ -1,0 +1,9 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk>
+    <borderlayout style="overflow-y:auto;height:auto"
+                  viewModel="@id('vm') @init('com.example.zktraining.controller.HomeController')">
+    </borderlayout>
+    <div>
+        hello
+    </div>
+</zk>

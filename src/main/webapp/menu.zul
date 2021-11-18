@@ -1,0 +1,64 @@
+<zk xmlns="http://www.zkoss.org/2005/zul">
+	<div sclass="sidebar-tag" viewModel="@id('vm')@init('com.example.zktraining.controller.SidebarVM')">
+        <div sclass="@bind(vm.tackClass)"
+        >
+        <!-- 
+            <div sclass="user-logo text-center">
+                <if test="@load(not vm.collapsed)">
+                    <label sclass="username" value="${c:l('sidebar.welcome')} ${vm.userName}"/>
+                </if>
+            </div> -->
+                    <button sclass="btn-tack" iconSclass="z-icon-thumb-tack"
+                     onClick="@command('tack')"/>
+            <div sclass="logoEMS ems-expand row">
+		        <div sclass="EMS col-md-6">
+		        	EMS
+		        </div>
+		        <div sclass="slogan col-md-6">
+		        	Network monitoring and warning system
+		        </div>
+	        </div>
+            <navbar orient="vertical" collapsed="@load(vm.collapsed)">
+                <apply template="iterate" menuItems="@load(vm.menuList)"/>
+            </navbar>
+        </div>
+        <div sclass="arrow">
+	        <div sclass="logoEMS">
+		        <div sclass="EMS">
+		        	EMS
+		        </div>
+	        </div>
+    	<navbar orient="vertical" collapsed="@load(vm.collapsed)">
+            <apply template="iterateicon" menuItems="@load(vm.menuList)"/>
+        </navbar>
+    </div>
+    </div>
+    <template name="iterate">
+        <forEach items="@load(menuItems)">
+            <apply template="@load(empty each.subMenus?'menuitem':'menu')" menuItem="@init(each)"/>
+        </forEach>
+    </template>
+    <template name="iterateicon">
+        <forEach items="@load(menuItems)">
+            <apply template="@load('menuitem')" menuItem="@init(each)"/>
+        </forEach>
+    </template>
+    <template name="menu">
+        <nav label="${c:l(menuItem.functionCode)}" iconSclass="@init(menuItem.fontIcon)"
+             badgeText="@init(vm.collapsed ? '': menuItem.counter)">
+            <apply template="iterate" menuItems="@init(menuItem.subMenus)"/>
+        </nav>
+    </template>
+    <template name="menuitem">
+    	<if test="@bind(forEachStatus.index eq 0)">
+	        <navitem sclass="menu-selected" label="${c:l(menuItem.functionCode)}" iconSclass="@init(menuItem.fontIcon)"
+	                 onClick="@command('navigate', menu=each, tbox=tbox)"
+	                 selected="true"/>
+    	</if>
+    	<if test="@bind(forEachStatus.index ne 0)">
+	        <navitem label="${c:l(menuItem.functionCode)}" iconSclass="@init(menuItem.fontIcon)"
+	                 onClick="@command('navigate', menu=each, tbox=tbox)"
+	                 selected="false"/>
+    	</if>
+    </template>
+</zk>

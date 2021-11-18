@@ -3,69 +3,104 @@
 <?link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"?>
 <?link rel="stylesheet" href="/resources/css/zk-bootstrap.css" ?>
 
+<?link rel="stylesheet" href="/resources/css/themes/theme1/zk-admin-bootstrap-custom-theme.css"?>
+<?link rel="stylesheet" href="/resources/css/themes/theme1/custom-theme.css" ?>
+<?link rel="stylesheet" href="/resources/css/themes/theme1/layout.css" ?>
 
-<!--
-<?link rel="stylesheet" href="/resources/css/themes/theme2/zk-admin-bootstrap-custom-theme.css"?>
-<?link rel="stylesheet" href="/resources/css/themes/theme2/custom-theme.css" ?>
-<?link rel="stylesheet" href="/resources/css/themes/theme2/layout.css" ?>
- -->
-<!--<?link rel="stylesheet" href="/resources/css/themes/theme2/h-layout.css" ?>-->
 <?link rel="stylesheet" type="text/css" href="/resources/css/font-icons.css"?>
 <?link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet" ?>
 <zk xmlns:n="native" xmlns:w="client">
-    <hlayout viewModel="@id('vm') @init('com.example.zktraining.controller.HomeController')"
+    <hlayout sclass="@bind(vm.themeSelected)" id="mainlayout"
+             viewModel="@id('vm')@init('com.example.zktraining.controller.MainVM')"
              width="100%">
-        <!--        <div sclass="container mt-5 ml-5">-->
-        <!--            <label value="@load(vm.title)"/>-->
-        <!--        </div>-->
-        <div class="alert alert-secondary mt-5">
-            <label value="@load(vm.title)"/>
-        </div>
-        <textbox value="@bind(vm.title)"></textbox>
-        <button onClick="@command('changeTitle')" label="change title"/>
+        <div class="wrap d-flex" style="width: 100%;">
+            <div class="sidebar-menu">
+                <apply templateURI="/menu.zul" />
+            </div>
+            <div class="wrap-content">
+                <div sclass="container-fluid" hflex="1">
+                    <div sclass="fluid-right header" hflex="1">
 
+                        <div hflex="1">
+                            <div class="z-header row">
+                                <div sclass="col-md-12" align="right">
+                                    <!-- start block header right -->
+                                    <hbox id="headerRight"
+                                          sclass="form-group">
+                                        <hbox sclass="form-group">
+                                            <combobox id="languageContainerId"
+                                                      sclass="form-group language-container" mold="rounded"
+                                                      readonly="true" selectedItem="@bind(vm.langSelected)"
+                                                      onChange="@command('changeLang', type=self.selectedItem.value, imageKey=self.selectedItem.label)">
+                                                <comboitem
+                                                        label="${labels.index.lang.vn.$}" value="vi_VN" />
+                                                <comboitem
+                                                        label="${labels.index.lang.us.$}" value="en_US" />
+                                            </combobox>
+                                        </hbox>
+                                        <hbox>
+                                            <!-- avatar and action person -->
+                                            <button sclass="head-button" iconSclass="z-icon-bell" tooltiptext="${labels.index.lang.us.$}"></button>
 
-        <div sclass="container mt-5">
-<!--            <grid >-->
-<!--                <auxhead>-->
-<!--                    <auxheader colspan="4" label="Danh Sach Học Sinh dùng foreach"/>-->
-<!--                </auxhead>-->
-<!--                <columns>-->
-<!--                    <column hflex="5">Họ Tên</column>-->
-<!--                    <column hflex="6">Nơi Ở</column>-->
-<!--                </columns>-->
-<!--                <rows sclass="narrow">-->
-<!--                    <forEach items="@load(vm.studentList)" var="item">-->
-<!--                        <row>-->
-<!--                            <label value="@load(item.name)"/>-->
-<!--                            <label value="${item.address}"/>-->
-<!--                        </row>-->
-<!--                    </forEach>-->
-<!--                </rows>-->
-<!--            </grid>-->
-            <grid model="@load(vm.studentList)" mold="paging" pageSize="100">
-                <columns>
-                    <column hflex="5">Họ Tên</column>
-                    <column hflex="6">Nơi Ở</column>
-                    <column ></column>
-                </columns>
-                <template name="model" var="item">
-                    <row onClick="@command('editStudent', item = item)">
-                        <label value="@load(item.name)"/>
-                        <label value="${item.address}"/>
-                        <label value="xóa" onClick="@command('confirmDelete', item = item)"/>
-                    </row>
-                </template>
-            </grid>
-            <label value="name"/>
-            <textbox value="@bind(vm.student.name)"></textbox>
-            <label value="address"/>
-            <textbox value="@bind(vm.student.address)"></textbox>
-            <button onClick="@command('saveStudent')" label="save"/>
-            <button onClick="@command('changeName')" label="Test change name"/>
-            <button onClick="@command('changeName')" label="Test change name"/>
-            <button onClick="@command('openFormAddNew')" label="open form inserts"/>
+                                            <button sclass="head-button"
+                                                    tooltiptext="${labels.index.person.logout}"
+                                                    iconSclass="z-icon-power-off"
+                                                    autodisable="@load(rowActions.autoDisable)"
+                                                    onClick="@command('logout')" />
+                                        </hbox>
+                                    </hbox>
+                                    <!-- end block header right -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <tabbox if="${vm.tabInfos != null}"
+                            sclass="fluid-right content-placeholder" id="tbox"
+                            model="@bind(vm.tabInfos)" selectedTab="@bind(vm.selected)">
+                        <template name="model:tab" var="tabItem">
+                            <tab iconSclass="@load(tabItem.iconsclass)"
+                                 context="editPopup_${tabItem.id}" label="${c:l(tabItem.title)}"
+                                 closable="true" draggable="false" droppable="false"
+                                 onDrop="@command('drop')"
+                                 onClose="@command('closeTab',idTab=tabItem.id )"
+                                 selected="@load(tabItem.selected)"
+                                 onClick="@command('updateTabID', id=tabItem.id)" />
+                        </template>
+                        <template name="model:tabpanel" var="tabItem">
+                            <tabpanel>
+                                <n:div sclass="container-fluid">
+                                    <include objectId="${tabItem.id}"
+                                             src="@load(tabItem.path)" />
+                                </n:div>
+                            </tabpanel>
+                        </template>
+                    </tabbox>
+                    <div class="row" id="main1" children="@load(vm.tabInfos)">
+                        <template name="children" var="tabItem">
+                            <menupopup id="editPopup_${tabItem.id}">
+                                <menuitem label="Pin"
+                                          iconSclass="z-icon-thumb-tack"
+                                          onClick="@command('pinTab', idTab=tabItem.id)" />
+                                <menuitem label="Unpin" iconSclass="z-icon-ban"
+                                          onClick="@command('unpinTab', idTab=tabItem.id)" />
+                                <menuseparator />
+                                <menuitem label="Close other tabs"
+                                          iconSclass="z-icon-times"
+                                          onClick="@command('closeOtherTabs', idTab=tabItem.id)" />
+                                <menuitem label="Close all tabs"
+                                          iconSclass="z-icon-times" onClick="@command('closeAllTabs')" />
+                            </menupopup>
 
+                        </template>
+                    </div>
+                    <div self="@{define(footer)}"
+                         sclass="page-footer font-small blue row">
+                        <div class="footer-copyright py-3">
+                            ${vm.footerApp}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </hlayout>
 </zk>
