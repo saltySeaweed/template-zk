@@ -39,4 +39,5 @@ public class Category {
             referencedColumnName = "id"
     )
     private Category category;
+
 }

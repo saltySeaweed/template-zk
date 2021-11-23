@@ -1,0 +1,25 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk>
+    <hlayout viewModel="@id('vm') @init('com.example.zktraining.controller.CategoryController')" width="100%">
+<!--    <button onClick="@command('loadDataCategory')"></button>-->
+    <div sclass="container mt-5">
+        <grid model="@load(vm.lstCategory)" mold="paging" pageSize="100">
+            <columns>
+                <column hflex="6">ID</column>
+                <column hflex="6">Icon</column>
+                <column hflex="6">Name</column>
+                <column >Action</column>
+            </columns>
+            <template name="model" var="item">
+                <row>
+                    <label value="@load(item.id)"/>
+                    <label value="@load(item.icon)"/>
+                    <label value="@load(item.name)"/>
+                    <label value="xóa" onClick="@command('confirmDelete', item = item)"/>
+                </row>
+            </template>
+        </grid>
+
+    </div>
+    </hlayout>
+</zk>

@@ -4,6 +4,7 @@
                   viewModel="@id('vm') @init('com.example.zktraining.controller.HomeController')">
     </borderlayout>
     <div>
-        hello
+      trang chủ
+
     </div>
 </zk>
