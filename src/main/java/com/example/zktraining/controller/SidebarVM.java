@@ -48,7 +48,7 @@ public class SidebarVM {
 			@ScopeParam(AppConst.TABBOXES) ListModelList<TabInfo> tabInfosModel) {
 		navigationModel = navModel;
 		menuList = menusService.menus;
-		MenuDTO menu = ZkTrainingApplication.ctx.getBean(FunctionService.class).findById(1);
+		MenuDTO menu = ZkTrainingApplication.ctx.getBean(FunctionService.class).findById(4);
 		Tabbox tabbox = new Tabbox();
 		tabInfos = tabInfosModel;
 

@@ -1,0 +1,84 @@
+<zk>
+    <window viewModel="@id('vm') @init('com.example.zktraining.controller.SaleController')">
+        <div sclass="container mt-5">
+
+            <grid id="formGrid" hflex="min" ctrlKeys="^h">
+                <auxhead>
+                    <auxheader colspan="2" label="Sale Form" iconSclass="z-icon-user-circle-o"/>
+                </auxhead>
+                <columns visible="false">
+                    <column/>
+                    <column/>
+                </columns>
+                <rows>
+                    <row>
+                        Id:
+                        <textbox id="id" hflex="1" constraint="no empty"/>
+                    </row>
+                    <row>
+                        Product:
+                        <selectbox hflex="1">
+                            <template name="model">
+                                <label value="product1"/>
+                            </template>
+                        </selectbox>
+                    </row>
+                    <row>
+                        <!-- constraint="no empty" -->
+                        Promotion:
+                        <textbox id="promotion" hflex="2" constraint="no empty"/>
+                    </row>
+                    <row>
+                        Quantity:
+                        <textbox id="quantity" hflex="1" constraint="no empty"/>
+                    </row>
+                    <row>
+                        <!-- constraint="no empty" -->
+                        Start date:
+                        <datebox id="start_date" hflex="3" constraint="no empty, no today, no future"/>
+                    </row>
+                    <row>
+                        End date:
+                        <datebox id="end_date" hflex="3" constraint="no empty, no today, no future"/>
+                    </row>
+
+                    <row spans="2" align="right">
+                        <hlayout>
+
+                            <button id="resetButton" label="Reset"/>
+                            <button id="createButton" label="create"/>
+                            <button id="updateButton" label="update" disabled="true"/>
+                            <button id="deleteButton" label="delete" disabled="true"/>
+                        </hlayout>
+                    </row>
+
+                </rows>
+            </grid>
+
+        </div>
+
+        <div>
+            <grid  mold="paging" pageSize="100" >
+                <columns>
+                    <column hflex="1">Id</column>
+                    <column hflex="2">Product</column>
+                    <column hflex="2">Promotion</column>
+                    <column hflex="2">Quantity</column>
+                    <column hflex="2">Start Date</column>
+                    <column hflex="2">End Date</column>
+                    <column ></column>
+                </columns>
+<!--                <template name="model" var="item">-->
+<!--                    <row onClick="@command('editStudent', item = item)">-->
+<!--                        <label value="@load(item.name)"/>-->
+<!--                        <label value="${item.address}"/>-->
+<!--                        <label value="xóa" onClick="@command('confirmDelete', item = item)"/>-->
+<!--                    </row>-->
+<!--                </template>-->
+            </grid>
+        </div>
+
+
+    </window>
+
+</zk>

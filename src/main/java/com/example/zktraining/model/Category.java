@@ -28,16 +28,15 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> product;
 
-//    @OneToMany(mappedBy = "category")
-//    private List<Category.zul> listCategories;
+    @OneToMany(mappedBy = "category")
+    private List<Category> listCategories;
 
-//    @JsonIgnore
-//    @ManyToOne
-//    @JoinColumn(
-//            name = "category_id",
-//            nullable = true,
-//            referencedColumnName = "id"
-//    )
-//    private Category.zul category;
-
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(
+            name = "category_id",
+            nullable = true,
+            referencedColumnName = "id"
+    )
+    private Category category;
 }

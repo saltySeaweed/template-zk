@@ -1,11 +1,9 @@
 package com.example.zktraining.repo;
 
-import com.example.zktraining.model.Category;
+import com.example.zktraining.model.Sale;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface CategoryRepository extends JpaRepository<Category,Integer> {
-
+public interface SaleRepository extends JpaRepository<Sale, Integer> {
 }

@@ -19,7 +19,7 @@ public class Sale {
     private Integer id;
 
     @Column(name = "promotion")
-    private String promotion;
+    private Integer promotion;
 
     @Column(name = "start_date")
     private Date startDate;
@@ -28,10 +28,10 @@ public class Sale {
     private Date endDate;
 
     @Column(name = "quantity")
-    private Date quantity;
+    private Integer quantity;
 
     @Column(name = "status")
-    private Date status;
+    private Integer status;
 
     @OneToOne
     @JoinColumn(
