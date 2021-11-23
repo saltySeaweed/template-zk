@@ -1,8 +1,9 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
 <zk>
-    <hlayout viewModel="@id('vm') @init('com.example.zktraining.controller.CategoryController')" width="100%">
+    <hlayout viewModel="@id('vm') @init('com.example.zktraining.controller.CategoryController')">
 <!--    <button onClick="@command('loadDataCategory')"></button>-->
     <div sclass="container mt-5">
+        <button onClick="@command('openFormAddNew')" label="Thêm mới"/>
         <grid model="@load(vm.lstCategory)" mold="paging" pageSize="100">
             <columns>
                 <column hflex="6">ID</column>
